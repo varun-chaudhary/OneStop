@@ -7,6 +7,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.onestop.R
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class AdapterReminders(private val allReminders: List<Reminders>) :
     RecyclerView.Adapter<AdapterReminders.MyViewHolder>() {
@@ -20,9 +22,9 @@ class AdapterReminders(private val allReminders: List<Reminders>) :
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val reminders: Reminders = allReminders[position]
-        holder.message.text = if (reminders.message?.isNotEmpty() == true) reminders.message else "No Message"
-        holder.time.text = reminders.remindDate.toString()
+        val reminder: Reminders = allReminders[position]
+        holder.message.text = reminder.message?.takeIf { it.isNotEmpty() } ?: "No Message"
+        holder.time.text = reminder.remindDate?.toString() ?: "No Date"
     }
 
     override fun getItemCount(): Int {
@@ -30,11 +32,11 @@ class AdapterReminders(private val allReminders: List<Reminders>) :
     }
 
     interface OnItemClickListener {
-        fun onDeleteClick(position: Int)
+        suspend fun onDeleteClick(position: Int)
     }
 
-    fun setOnItemClickListener(listener: Any) {
-//        mListener = listener
+    fun setOnItemClickListener(listener: OnItemClickListener?) {
+        mListener = listener
     }
 
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -46,7 +48,10 @@ class AdapterReminders(private val allReminders: List<Reminders>) :
             deleteReminder.setOnClickListener {
                 val position = adapterPosition
                 if (position != RecyclerView.NO_POSITION) {
-                    mListener?.onDeleteClick(position)
+                    GlobalScope.launch {
+                        mListener?.onDeleteClick(position)
+
+                    }
                 }
             }
         }

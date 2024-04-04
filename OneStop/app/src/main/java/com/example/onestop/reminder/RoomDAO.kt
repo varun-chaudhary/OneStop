@@ -38,6 +38,7 @@ interface RoomDAO {
     @Query("SELECT * FROM reminder WHERE reminder.id LIKE :objectID")
     suspend fun getObjectUsingID(objectID: Int): Reminders
 
+
     @get:Query("SELECT id FROM REMINDER")
     val allIds: List<Int?>?
 }
