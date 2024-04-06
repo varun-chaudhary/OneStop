@@ -8,7 +8,9 @@ import androidx.appcompat.widget.Toolbar
 
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import com.example.onestop.quicknotes.QuickNotes
 import com.example.onestop.reminder.ReminderFragment
+import com.example.onestop.taskmanager.TaskManager
 import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener{
@@ -52,6 +54,16 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.reminder -> {
                 val reminderFragment = ReminderFragment()
                 supportFragmentManager.beginTransaction().replace(R.id.fragment_container, reminderFragment)
+                    .commit()
+            }
+            R.id.task_manager -> {
+                val task_manager = TaskManager()
+                supportFragmentManager.beginTransaction().replace(R.id.fragment_container, task_manager)
+                    .commit()
+            }
+            R.id.notes -> {
+                val quick_notes = QuickNotes()
+                supportFragmentManager.beginTransaction().replace(R.id.fragment_container, quick_notes)
                     .commit()
             }
 //

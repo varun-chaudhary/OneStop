@@ -137,7 +137,7 @@ class ReminderFragment : Fragment() {
                     intent.putExtra("Message", lastReminder.message)
                     intent.putExtra("RemindDate", lastReminder.remindDate.toString())
                     intent.putExtra("id", lastReminder.id)
-                    val intent1 = PendingIntent.getBroadcast(requireContext(), lastReminder.id, intent, PendingIntent.FLAG_MUTABLE)
+                    val intent1 = PendingIntent.getBroadcast(requireContext(), lastReminder.id, intent, PendingIntent.FLAG_IMMUTABLE)
                     val alarmManager = requireContext().getSystemService(Context.ALARM_SERVICE) as AlarmManager
                     alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.timeInMillis, intent1)
 

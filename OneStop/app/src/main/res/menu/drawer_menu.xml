@@ -16,6 +16,10 @@
             android:id="@+id/notes"
             android:icon="@drawable/reminder"
             android:title="QuickNotes" />
+        <item
+            android:id="@+id/whiteboard"
+            android:icon="@drawable/reminder"
+            android:title="White Board" />
     </group>
 
 

@@ -23,7 +23,6 @@ class NotifierAlarm : BroadcastReceiver() {
         val appDatabase = getInstance(context.applicationContext)
         val roomDAO = appDatabase.getRoomDAO()
         var reminder: Reminders
-        //by pranav
         GlobalScope.launch {
             reminder = roomDAO.getObjectUsingID(intent.getIntExtra("id", 0))
             roomDAO.Delete(reminder)
@@ -37,7 +36,7 @@ class NotifierAlarm : BroadcastReceiver() {
         val taskStackBuilder = TaskStackBuilder.create(context)
         taskStackBuilder.addParentStack(MainActivity::class.java)
         taskStackBuilder.addNextIntent(intent1)
-        val intent2 = taskStackBuilder.getPendingIntent(1, PendingIntent.FLAG_UPDATE_CURRENT)
+        val intent2 = taskStackBuilder.getPendingIntent(1, PendingIntent.FLAG_IMMUTABLE)
 
         // NotificationCompat.Builder builder = new NotificationCompat.Builder(context);//by pranav
         val builder = NotificationCompat.Builder(context, "891")
