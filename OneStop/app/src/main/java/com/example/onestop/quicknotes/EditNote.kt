@@ -1,12 +1,13 @@
 package com.example.onestop.quicknotes
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import com.example.onestop.quicknotes.databinding.ActivityEditNoteBinding
-import com.example.onestop.quicknotes.viewmodel.NoteViewModel
+import com.example.onestop.databinding.ActivityEditNoteBinding
+
 
 class EditNote : AppCompatActivity() {
 
@@ -42,7 +43,7 @@ class EditNote : AppCompatActivity() {
                 viewModel.updateNote(editedNote)
                 Toast.makeText(this@EditNote, "Updated the note", Toast.LENGTH_SHORT).show()
 
-                val mainIntent = Intent(this@EditNote, MainActivity::class.java)
+                val mainIntent = Intent(this@EditNote, QuickNotes::class.java)
                 startActivity(mainIntent)
             } else {
                 Toast.makeText(this@EditNote, "Please enter title or description", Toast.LENGTH_SHORT).show()

@@ -6,10 +6,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.lifecycle.ViewModelProvider
+import com.example.onestop.R
+import com.example.onestop.databinding.ActivityAddNoteBinding
 import com.google.android.material.snackbar.Snackbar
 
 
-import com.example.onestop.quicknotes.databinding.ActivityAddNoteBinding
 
 class AddNote : AppCompatActivity() {
 
@@ -38,7 +39,7 @@ class AddNote : AppCompatActivity() {
                 val randomColor =  colorsArray[randomInt]
                 Log.d("TAGYOYO", "RANDOM COLOR $randomColor")
                 viewModel.addNote(Note(0, binding?.etNoteTitle?.text.toString(), binding?.etNoteDes?.text.toString(), randomColor))
-                val mainIntent = Intent(this, MainActivity::class.java)
+                val mainIntent = Intent(this, QuickNotes::class.java)
                 startActivity(mainIntent)
             }else {
                 Snackbar.make(binding?.root!!, "Add title and description of the note to be added", Snackbar.LENGTH_SHORT).show()

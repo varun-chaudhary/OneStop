@@ -4,7 +4,8 @@ import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.onestop.quicknotes.databinding.ActivityOpenNoteBinding
+import com.example.onestop.databinding.ActivityOpenNoteBinding
+
 
 class OpenNote : AppCompatActivity() {
 
