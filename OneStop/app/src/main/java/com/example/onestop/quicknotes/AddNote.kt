@@ -39,8 +39,9 @@ class AddNote : AppCompatActivity() {
                 val randomColor =  colorsArray[randomInt]
                 Log.d("TAGYOYO", "RANDOM COLOR $randomColor")
                 viewModel.addNote(Note(0, binding?.etNoteTitle?.text.toString(), binding?.etNoteDes?.text.toString(), randomColor))
-                val mainIntent = Intent(this, QuickNotes::class.java)
-                startActivity(mainIntent)
+                val quick_notes = QuickNotes()
+                supportFragmentManager.beginTransaction().replace(R.id.fragment_container, quick_notes)
+                    .commit()
             }else {
                 Snackbar.make(binding?.root!!, "Add title and description of the note to be added", Snackbar.LENGTH_SHORT).show()
             }

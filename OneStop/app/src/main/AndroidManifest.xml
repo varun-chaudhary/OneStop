@@ -17,6 +17,16 @@
         <activity
             android:name=".LandingPage"
             android:exported="false" />
+        <activity android:name=".quicknotes.AddNote"
+            android:exported="false" />
+            />
+        <activity android:name=".quicknotes.EditNote"
+            android:exported="false" />
+            />
+        <activity android:name=".quicknotes.OpenNote"
+            android:exported="false" />
+            />
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
