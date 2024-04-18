@@ -18,9 +18,6 @@ class LandingPage : AppCompatActivity() , NavigationView.OnNavigationItemSelecte
     lateinit var  drawer: DrawerLayout
     lateinit var navigationView: NavigationView
     lateinit var usertv:TextView
-
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_landing_page)
@@ -41,6 +38,9 @@ class LandingPage : AppCompatActivity() , NavigationView.OnNavigationItemSelecte
 
         var actionBarDrawerToggle = ActionBarDrawerToggle(this,drawer,toolbar,
             R.string.navigation_drawer_open,R.string.navigation_drawer_close)
+        val task_manager = TaskManager()
+        supportFragmentManager.beginTransaction().replace(R.id.fragment_container, task_manager)
+            .commit()
 
         drawer.addDrawerListener(actionBarDrawerToggle)
         actionBarDrawerToggle.syncState()
@@ -74,15 +74,6 @@ class LandingPage : AppCompatActivity() , NavigationView.OnNavigationItemSelecte
                 supportFragmentManager.beginTransaction().replace(R.id.fragment_container, quick_notes)
                     .commit()
             }
-//
-//            R.id.nav_chat -> supportFragmentManager.beginTransaction().replace(R.id.fragment_container,ChatFragment())
-//                .commit()
-//
-//            R.id.nav_profile -> supportFragmentManager.beginTransaction().replace(R.id.fragment_container,ProfileFragment())
-//                .commit()
-//
-//            R.id.nav_share -> Toast.makeText(this, "Share", Toast.LENGTH_SHORT).show()
-//            R.id.nav_send -> Toast.makeText(this, "Send", Toast.LENGTH_SHORT).show()
         }
         drawer.closeDrawer(GravityCompat.START)
         return true

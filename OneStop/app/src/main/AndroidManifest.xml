@@ -26,6 +26,12 @@
         <activity android:name=".quicknotes.OpenNote"
             android:exported="false" />
             />
+        <activity android:name=".taskmanager.UpdateCard"
+            android:exported="false" />
+            />
+        <activity android:name=".taskmanager.CreateCard"
+            android:exported="false" />
+            />
 
         <activity
             android:name=".MainActivity"
