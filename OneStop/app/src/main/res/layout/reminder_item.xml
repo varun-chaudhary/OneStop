@@ -26,7 +26,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="#80C6FF"
+                    android:background="@color/green"
                     android:orientation="vertical"
                     android:padding="15dp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -39,6 +39,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
                         android:layout_gravity="center"
+                        android:textColor="@color/black"
                         android:layout_weight="1"
                         android:gravity="center"
                         android:padding="5dp"
@@ -50,6 +51,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
                         android:layout_gravity="center"
+                        android:textColor="@color/black"
                         android:layout_weight="1"
                         android:gravity="center"
                         android:padding="5dp" />
