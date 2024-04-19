@@ -41,6 +41,7 @@ class IncompleteTask : Fragment() {
             startActivity(intent)
 
         }
+
         setRecycler()
     }
 
@@ -48,7 +49,7 @@ class IncompleteTask : Fragment() {
 
         val ls=DataObject.getAllData()
 //        print(ls)
-        binding.recyclerView.adapter = Adapter(DataObject.getAllData())
+        binding.recyclerView.adapter = Adapter(DataObject.getIncompletetask())
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
     }
 

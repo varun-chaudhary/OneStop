@@ -38,7 +38,7 @@ class CompletedTask : Fragment() {
     }
 
     private fun setRecycler() {
-        binding.recyclerView.adapter = Adapter(DataObject.getAllData())
+        binding.recyclerView.adapter = Adapter(DataObject.getCompletedtask())
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
     }
 

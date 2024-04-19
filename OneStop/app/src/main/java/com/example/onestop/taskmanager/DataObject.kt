@@ -4,8 +4,8 @@ package com.example.onestop.taskmanager
 object DataObject {
     var listdata = mutableListOf<CardInfo>()
 
-    fun setData(title: String, priority: String) {
-        listdata.add(CardInfo(title, priority,false))
+    fun setData(title: String, priority: String,stt:Boolean) {
+        listdata.add(CardInfo(title, priority,stt))
     }
 
     fun getAllData(): List<CardInfo> {
@@ -35,7 +35,10 @@ object DataObject {
     fun deleteData(pos:Int){
         listdata.removeAt(pos)
     }
-
+    fun updateState(pos:Int,stt:Boolean)
+    {
+        listdata[pos].done=stt
+    }
     fun updateData(pos:Int,title:String,priority:String,stt:Boolean)
     {
         listdata[pos].title=title

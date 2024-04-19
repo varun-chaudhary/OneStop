@@ -34,21 +34,7 @@ class UpdateCard : AppCompatActivity() {
             binding.createTitle.setText(title)
             binding.createPriority.setText(priority)
 
-//            binding.deleteButton.setOnClickListener {
-//                DataObject.deleteData(pos)
-//                GlobalScope.launch {
-//                    database.dao().deleteTask(
-//                        Entity(
-//                            pos + 1,
-//                            binding.createTitle.text.toString(),
-//                            binding.createPriority.text.toString()
-//                        )
-//                    )
-//                }
-//                myIntent()
-//            }
-
-            binding.updateButton.setOnClickListener {
+            binding.doneupdate.setOnClickListener {
                 DataObject.updateData(
                     pos,
                     binding.createTitle.text.toString(),
@@ -62,6 +48,26 @@ class UpdateCard : AppCompatActivity() {
                             binding.createTitle.text.toString(),
                             binding.createPriority.text.toString(),
                             true
+                        )
+                    )
+                }
+                myIntent()
+            }
+
+            binding.updateButton.setOnClickListener {
+                DataObject.updateData(
+                    pos,
+                    binding.createTitle.text.toString(),
+                    binding.createPriority.text.toString(),
+                    false
+                )
+                GlobalScope.launch {
+                    database.dao().updateTask(
+                        Entity(
+                            pos + 1,
+                            binding.createTitle.text.toString(),
+                            binding.createPriority.text.toString(),
+                            false
                         )
                     )
                 }

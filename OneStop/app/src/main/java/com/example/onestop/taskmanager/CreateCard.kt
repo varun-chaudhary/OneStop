@@ -29,7 +29,7 @@ class CreateCard : AppCompatActivity() {
             val priority = binding.createPriority.text.toString().trim()
 
             if (title.isNotEmpty() && priority.isNotEmpty()) {
-                DataObject.setData(title, priority)
+                DataObject.setData(title, priority,false)
                 GlobalScope.launch {
                     database.dao().insertTask(Entity(0, title, priority,false))
                 }
