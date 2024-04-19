@@ -12,6 +12,18 @@ object DataObject {
         return listdata
     }
 
+    fun getCompletedtask(): List<CardInfo>
+    {
+        val doneCards = listdata.filter { it.done }
+        return doneCards
+    }
+
+    fun getIncompletetask(): List<CardInfo>
+    {
+        val doneCards = listdata.filter { !it.done }
+        return doneCards
+    }
+
     fun deleteAll(){
         listdata.clear()
     }

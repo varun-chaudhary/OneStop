@@ -83,6 +83,7 @@ dependencies {
     // optional - Paging 3 Integration
     implementation("androidx.room:room-paging:$room_version")
     implementation(libs.androidx.core.ktx)
+    implementation ("androidx.viewpager2:viewpager2:1.0.0")
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.activity)

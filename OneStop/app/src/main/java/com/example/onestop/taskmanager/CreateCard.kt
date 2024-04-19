@@ -31,10 +31,10 @@ class CreateCard : AppCompatActivity() {
             if (title.isNotEmpty() && priority.isNotEmpty()) {
                 DataObject.setData(title, priority)
                 GlobalScope.launch {
-                    database.dao().insertTask(Entity(0, title, priority))
+                    database.dao().insertTask(Entity(0, title, priority,false))
                 }
                 val intent = Intent(this, LandingPage::class.java)
-                intent.putExtra("id","task")
+                intent.putExtra("id","tm")
                 startActivity(intent)
             }
         }

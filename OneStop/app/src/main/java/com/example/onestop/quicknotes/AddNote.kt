@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.lifecycle.ViewModelProvider
+import com.example.onestop.LandingPage
 import com.example.onestop.R
 import com.example.onestop.databinding.ActivityAddNoteBinding
 import com.google.android.material.snackbar.Snackbar
@@ -24,7 +25,6 @@ class AddNote : AppCompatActivity() {
 
         viewModel = ViewModelProvider(this).get(NoteViewModel::class.java)
 
-        //back button functionality
         binding?.ivBackButton?.setOnClickListener {
             finish()
         }
@@ -39,9 +39,9 @@ class AddNote : AppCompatActivity() {
                 val randomColor =  colorsArray[randomInt]
                 Log.d("TAGYOYO", "RANDOM COLOR $randomColor")
                 viewModel.addNote(Note(0, binding?.etNoteTitle?.text.toString(), binding?.etNoteDes?.text.toString(), randomColor))
-                val quick_notes = QuickNotes()
-                supportFragmentManager.beginTransaction().replace(R.id.fragment_container, quick_notes)
-                    .commit()
+                val intent = Intent(this, LandingPage::class.java)
+                intent.putExtra("id","qn")
+                startActivity(intent)
             }else {
                 Snackbar.make(binding?.root!!, "Add title and description of the note to be added", Snackbar.LENGTH_SHORT).show()
             }

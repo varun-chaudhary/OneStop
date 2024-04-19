@@ -72,7 +72,7 @@ class UpdateCard : AppCompatActivity() {
 
     private fun myIntent() {
         val intent = Intent(this, LandingPage::class.java)
-        intent.putExtra("id","task")
+        intent.putExtra("id","tm")
         startActivity(intent)
     }
 }

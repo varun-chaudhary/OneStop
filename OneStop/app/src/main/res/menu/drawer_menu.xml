@@ -5,13 +5,14 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/reminder"
-            android:icon="@drawable/baseline_add_alarm_24"
-            android:title="Reminder" />
-        <item
             android:id="@+id/task_manager"
             android:icon="@drawable/baseline_add_task_24"
             android:title="Task Manager" />
+        <item
+            android:id="@+id/reminder"
+            android:icon="@drawable/baseline_add_alarm_24"
+            android:title="Reminder" />
+
         <item
             android:id="@+id/notes"
             android:icon="@drawable/reminder"

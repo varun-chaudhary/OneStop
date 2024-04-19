@@ -21,6 +21,7 @@ class LandingPage : AppCompatActivity() , NavigationView.OnNavigationItemSelecte
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_landing_page)
+        val choice=intent.getStringExtra("id")
         var navigationView = findViewById<NavigationView>(R.id.nav_view)
         val headerView = navigationView.getHeaderView(0)
         usertv = headerView.findViewById(R.id.navusername)
@@ -38,9 +39,28 @@ class LandingPage : AppCompatActivity() , NavigationView.OnNavigationItemSelecte
 
         var actionBarDrawerToggle = ActionBarDrawerToggle(this,drawer,toolbar,
             R.string.navigation_drawer_open,R.string.navigation_drawer_close)
-        val task_manager = TaskManager()
-        supportFragmentManager.beginTransaction().replace(R.id.fragment_container, task_manager)
-            .commit()
+        when(choice)
+        {
+            "tm"->
+            {
+                val task_manager = TaskManager()
+                supportFragmentManager.beginTransaction().replace(R.id.fragment_container, task_manager)
+                    .commit()
+            }
+            "qn"->
+            {
+                val quick_notes = QuickNotes()
+                supportFragmentManager.beginTransaction().replace(R.id.fragment_container, quick_notes)
+                    .commit()
+            }
+            else ->{
+                val task_manager = TaskManager()
+                supportFragmentManager.beginTransaction().replace(R.id.fragment_container, task_manager)
+                    .commit()
+            }
+
+        }
+
 
         drawer.addDrawerListener(actionBarDrawerToggle)
         actionBarDrawerToggle.syncState()
