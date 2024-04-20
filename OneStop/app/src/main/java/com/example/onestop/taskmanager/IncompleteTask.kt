@@ -8,9 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Room
-import com.example.onestop.R
 import com.example.onestop.databinding.FragmentIncompleteTaskBinding
-import com.example.onestop.databinding.FragmentTaskManagerBinding
 
 
 class IncompleteTask : Fragment() {
@@ -33,7 +31,7 @@ class IncompleteTask : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         database = Room.databaseBuilder(
             requireContext().applicationContext, myDatabase::class.java, "To_Do"
-        ).fallbackToDestructiveMigration().build()
+        ).build()
 
         binding.add.setOnClickListener {
             val intent = Intent(requireContext(), CreateCard::class.java)
@@ -49,8 +47,8 @@ class IncompleteTask : Fragment() {
 
         val ls=DataObject.getAllData()
 //        print(ls)
-        binding.recyclerView.adapter = Adapter(DataObject.getIncompletetask())
-        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        binding.recyclerViewin.adapter = AdapterIn(DataObject.getIncompletetask())
+        binding.recyclerViewin.layoutManager = LinearLayoutManager(requireContext())
     }
 
     override fun onDestroyView() {

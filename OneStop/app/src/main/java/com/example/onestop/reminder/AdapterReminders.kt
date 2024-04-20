@@ -15,6 +15,7 @@ class AdapterReminders(private val allReminders: List<Reminders>) :
 
     private var mListener: OnItemClickListener? = null
 
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val view: View = LayoutInflater.from(parent.context)
             .inflate(R.layout.reminder_item, parent, false)

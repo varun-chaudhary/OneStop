@@ -1,4 +1,5 @@
 package com.example.onestop.taskmanager
+
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
@@ -8,12 +9,10 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-
 import com.example.onestop.R
 
-class Adapter(private var data: List<CardInfo>) : RecyclerView.Adapter<Adapter.ViewHolder>() {
 
-    private lateinit var database: myDatabase
+class AdapterIn(private var data: List<CardInfo>) : RecyclerView.Adapter<AdapterIn.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var title: TextView = itemView.findViewById(R.id.title)

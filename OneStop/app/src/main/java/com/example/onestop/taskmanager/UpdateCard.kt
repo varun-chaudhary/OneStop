@@ -35,12 +35,7 @@ class UpdateCard : AppCompatActivity() {
             binding.createPriority.setText(priority)
 
             binding.doneupdate.setOnClickListener {
-                DataObject.updateData(
-                    pos,
-                    binding.createTitle.text.toString(),
-                    binding.createPriority.text.toString(),
-                    true
-                )
+                DataObject.updateState(pos,true)
                 GlobalScope.launch {
                     database.dao().updateTask(
                         Entity(

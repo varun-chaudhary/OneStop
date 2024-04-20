@@ -36,7 +36,7 @@ class TaskManager : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         database = Room.databaseBuilder(
             requireContext().applicationContext, myDatabase::class.java, "To_Do"
-        ).fallbackToDestructiveMigration().build()
+        ).build()
         GlobalScope.launch{
             DataObject.listdata=database.dao().getTasks() as MutableList<CardInfo>
         }
