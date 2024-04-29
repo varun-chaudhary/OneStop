@@ -12,6 +12,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import com.example.onestop.quicknotes.QuickNotes
 import com.example.onestop.reminder.ReminderFragment
 import com.example.onestop.taskmanager.TaskManager
+import com.example.onestop.whiteboard.whiteboard
 import com.google.android.material.navigation.NavigationView
 
 class LandingPage : AppCompatActivity() , NavigationView.OnNavigationItemSelectedListener{
@@ -94,6 +95,13 @@ class LandingPage : AppCompatActivity() , NavigationView.OnNavigationItemSelecte
                 supportFragmentManager.beginTransaction().replace(R.id.fragment_container, quick_notes)
                     .commit()
             }
+            R.id.whiteboard->
+            {
+                val whiteboard = whiteboard()
+                supportFragmentManager.beginTransaction().replace(R.id.fragment_container,whiteboard)
+                    .commit()
+            }
+
         }
         drawer.closeDrawer(GravityCompat.START)
         return true

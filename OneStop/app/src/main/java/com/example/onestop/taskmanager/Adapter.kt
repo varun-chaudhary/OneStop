@@ -30,6 +30,7 @@ class Adapter(private val data: List<Task>) : RecyclerView.Adapter<Adapter.ViewH
 //            }
         }
 
+
         fun bind(cardInfo:Task) {
             binding.apply {
                 titlein.text = cardInfo.title

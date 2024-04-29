@@ -23,7 +23,7 @@ class IncompleteTask : Fragment() {
     private lateinit var adapter: Adapter
     private lateinit var temp: List<Task>
     private lateinit var database: myDatabase
-    private lateinit var parallelArrayOfIds: ArrayList<Int>
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -53,16 +53,18 @@ class IncompleteTask : Fragment() {
         if (temp.isNotEmpty()) {
             binding.recyclerViewin.visibility = View.VISIBLE
         }
-        parallelArrayOfIds = ArrayList()
+
         temp.forEach { card ->
-            parallelArrayOfIds.add(card.id)
+            DataObject.parallelArrayOfIds.add(card.id)
         }
         adapter = Adapter(temp)
         binding.recyclerViewin.adapter = adapter
         adapter.setOnItemClickListener(object : Adapter.OnItemClickListener {
             override suspend fun onDeleteClick(pos: Int) {
                 withContext(Dispatchers.Main) {
-
+                    val t=database.dao().getObjectUsingID(DataObject.parallelArrayOfIds[pos])
+                    database.dao().deleteTask(t)
+                    setItemsInRecyclerView()
                 }
             }
 

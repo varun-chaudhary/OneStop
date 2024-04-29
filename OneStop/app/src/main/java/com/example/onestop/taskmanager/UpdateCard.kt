@@ -28,7 +28,7 @@ class UpdateCard : AppCompatActivity() {
             var en:Task=Task()
 
             GlobalScope.launch {
-                 en=database.dao().getTask()
+                 en=database.dao().getObjectUsingID(DataObject.parallelArrayOfIds[pos])
             }
             binding.createTitle.setText(en.title)
             binding.createPriority.setText(en.priority)
