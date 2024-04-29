@@ -4,11 +4,10 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "To_Do")
-data class Entity(
+class Task {
     @PrimaryKey(autoGenerate = true)
-    var id:Int,
-    var title:String,
-    var priority:String,
-    var done:Boolean
-
-)
+    var id = 0
+    var title: String? = null
+    var priority : String? = null
+    var done :Boolean? = null
+}

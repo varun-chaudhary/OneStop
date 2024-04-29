@@ -10,18 +10,20 @@ import androidx.room.Update
 @Dao
 interface DAO {
     @Insert
-    suspend fun insertTask(entity: Entity)
+    suspend fun insertTask(task: Task)
 
     @Update
-    suspend fun updateTask(entity: Entity)
+    suspend fun updateTask(task: Task)
 
     @Delete
-    suspend fun deleteTask(entity: Entity)
+    suspend fun deleteTask(task: Task)
 
     @Query("Delete from to_do")
     suspend fun deleteAll()
 
     @Query("Select * from to_do")
-    suspend fun getTasks():List<CardInfo>
+    suspend fun getTasks():List<Task>
+    @get:Query("Select id from to_do")
+    val allIds: List<Int?>?
 
 }

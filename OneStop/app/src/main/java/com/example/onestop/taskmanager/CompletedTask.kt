@@ -1,14 +1,16 @@
 package com.example.onestop.taskmanager
 
-import Adapter
+
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.Room
 import com.example.onestop.databinding.FragmentCompletedTaskBinding
+import kotlinx.coroutines.launch
 
 class CompletedTask : Fragment() {
 
@@ -28,15 +30,16 @@ class CompletedTask : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        database = Room.databaseBuilder(
-            requireContext().applicationContext, myDatabase::class.java, "To_Do"
-        ).build()
+        database = myDatabase.getInstance(requireContext().applicationContext)
 
-        setRecycler()
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            setItemsInRecyclerView()
+        }
     }
 
-    private fun setRecycler() {
-        binding.recyclerView.adapter = Adapter(requireContext(),DataObject.getCompletedtask())
+    private suspend fun  setItemsInRecyclerView() {
+        binding.recyclerView.adapter = Adapter(database.dao().getTasks())
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
     }
 
