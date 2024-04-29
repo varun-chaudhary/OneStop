@@ -12,6 +12,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import com.example.onestop.quicknotes.QuickNotes
 import com.example.onestop.reminder.ReminderFragment
 import com.example.onestop.taskmanager.TaskManager
+import com.example.onestop.whiteboard.Whiteboard
 import com.google.android.material.navigation.NavigationView
 
 class LandingPage : AppCompatActivity() , NavigationView.OnNavigationItemSelectedListener{
@@ -27,7 +28,7 @@ class LandingPage : AppCompatActivity() , NavigationView.OnNavigationItemSelecte
         usertv = headerView.findViewById(R.id.navusername)
 
         val username = intent.getStringExtra("username")
-        usertv.text = username
+        usertv.text = "Hello! "+username
 
         var toolbar: Toolbar
                 = findViewById(R.id.toolbar)
@@ -92,6 +93,12 @@ class LandingPage : AppCompatActivity() , NavigationView.OnNavigationItemSelecte
             R.id.notes -> {
                 val quick_notes = QuickNotes()
                 supportFragmentManager.beginTransaction().replace(R.id.fragment_container, quick_notes)
+                    .commit()
+            }
+            R.id.whiteboard->
+            {
+                val wb=Whiteboard()
+                supportFragmentManager.beginTransaction().replace(R.id.fragment_container, wb)
                     .commit()
             }
         }

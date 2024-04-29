@@ -54,7 +54,6 @@ class CompletedTask : Fragment() {
 
 
             override suspend fun onDeleteClick(position: Int) {
-
                 val cur=temp[position]
                 val taskId = position + 1
                 val newData = temp.toMutableList()
@@ -67,8 +66,6 @@ class CompletedTask : Fragment() {
                 viewLifecycleOwner.lifecycleScope.launch {
                     setRecycler()
                 }
-
-
             }
         })
     }

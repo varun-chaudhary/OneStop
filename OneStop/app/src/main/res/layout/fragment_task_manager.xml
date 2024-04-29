@@ -15,8 +15,10 @@
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
+        android:background="@color/teal"
         android:minHeight="?attr/actionBarSize"
+        android:textSize="24dp"
+        android:textStyle="bold"
         app:tabSelectedTextColor="@color/black"
         app:tabIndicator="@drawable/tab_indicator"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />

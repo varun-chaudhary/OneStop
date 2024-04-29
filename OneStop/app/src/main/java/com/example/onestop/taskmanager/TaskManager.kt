@@ -48,10 +48,10 @@ class TaskManager : Fragment() {
         val tabLayout: TabLayout = view.findViewById(R.id.tabLayout)
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
             if(position==0) {
-                tab.text = "Incomplete"
+                tab.text = "To Do"
             }
             else {
-                tab.text = "Completed"
+                tab.text = "Done"
             }
 
         }.attach()

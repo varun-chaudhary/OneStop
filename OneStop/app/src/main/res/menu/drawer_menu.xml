@@ -19,7 +19,7 @@
             android:title="QuickNotes" />
         <item
             android:id="@+id/whiteboard"
-            android:icon="@drawable/reminder"
+            android:icon="@drawable/penicon"
             android:title="White Board" />
     </group>
 
