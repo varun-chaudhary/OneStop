@@ -47,7 +47,7 @@ class IncompleteTask : Fragment() {
 
         val ls=DataObject.getAllData()
 //        print(ls)
-        binding.recyclerViewin.adapter = AdapterIn(DataObject.getIncompletetask())
+        binding.recyclerViewin.adapter = AdapterIn(requireContext(),DataObject.getIncompletetask())
         binding.recyclerViewin.layoutManager = LinearLayoutManager(requireContext())
     }
 

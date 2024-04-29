@@ -4,45 +4,66 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import androidx.room.Room
 import com.example.onestop.R
+import com.example.onestop.databinding.TaskViewBinding
+import com.example.onestop.taskmanager.CardInfo
+import com.example.onestop.taskmanager.Entity
+import com.example.onestop.taskmanager.UpdateCard
+import com.example.onestop.taskmanager.myDatabase
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
+class AdapterIn(private val context: Context, private var data: List<CardInfo>) : RecyclerView.Adapter<AdapterIn.ViewHolder>() {
 
-class AdapterIn(private var data: List<CardInfo>) : RecyclerView.Adapter<AdapterIn.ViewHolder>() {
+    private lateinit var database: myDatabase
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var title: TextView = itemView.findViewById(R.id.title)
-        var priority: TextView = itemView.findViewById(R.id.priority)
-        var layout: View = itemView.findViewById(R.id.mylayout)
-        var img: ImageView = itemView.findViewById(R.id.taskimg)
+    inner class ViewHolder(private val binding: TaskViewBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(item: CardInfo) {
+            binding.apply {
+                titlein.text = item.title
+                priorityin.text = item.priority
+
+                when (item.priority) {
+                    "1" -> mylayoutin.setBackgroundColor(Color.parseColor("#F05454"))
+                    "2" -> mylayoutin.setBackgroundColor(Color.parseColor("#EDC988"))
+                    else -> mylayoutin.setBackgroundColor(Color.parseColor("#00917C"))
+                }
+
+                taskimg.setOnClickListener {
+                    val position = adapterPosition
+                    if (position != RecyclerView.NO_POSITION) {
+                        val currentTask = data[position]
+                        val taskId = position + 1
+                        GlobalScope.launch(Dispatchers.IO) {
+                            DataObject.updateState(position, true)
+                            database.dao().updateTask(Entity(taskId, currentTask.title, currentTask.priority, true))
+                        }
+                    }
+                }
+
+                root.setOnClickListener {
+                    val intent = Intent(context, UpdateCard::class.java)
+                    intent.putExtra("id", adapterPosition)
+                    context.startActivity(intent)
+                }
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.task_view, parent, false)
-        return ViewHolder(itemView)
+        val binding = TaskViewBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        database = Room.databaseBuilder(
+            context.applicationContext, myDatabase::class.java, "To_Do"
+        ).build()
+        return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val currentTask = data[position]
-
-        when (currentTask.priority.toLowerCase()) {
-            "high" -> holder.layout.setBackgroundColor(Color.parseColor("#F05454"))
-            "medium" -> holder.layout.setBackgroundColor(Color.parseColor("#EDC988"))
-            else -> holder.layout.setBackgroundColor(Color.parseColor("#00917C"))
-        }
-
-        holder.title.text = currentTask.title
-        holder.priority.text = currentTask.priority
-
-        holder.itemView.setOnClickListener {
-            val intent = Intent(holder.itemView.context, UpdateCard::class.java)
-            intent.putExtra("id", position)
-            holder.itemView.context.startActivity(intent)
-        }
+        holder.bind(data[position])
     }
 
     override fun getItemCount(): Int {

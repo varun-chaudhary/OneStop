@@ -64,6 +64,7 @@
                     android:id="@+id/create_priority"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="number"
                     android:hint="Priority"
                     android:fontFamily="@font/montserrat_medium"/>
 

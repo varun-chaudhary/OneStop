@@ -38,6 +38,7 @@
         android:layout_marginTop="20dp"
         android:hint="Priority"
         android:padding="15dp"
+        android:inputType="number"
         android:background="@drawable/custom_edittetext"
         android:textColorHint="#BFBBBB"
         android:textColor="@color/white"

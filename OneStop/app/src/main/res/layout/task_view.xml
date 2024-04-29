@@ -2,7 +2,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     android:padding="7dp"
+    tools:context=".taskmanager.IncompleteTask"
+
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -11,13 +14,13 @@
         android:backgroundTint="@color/black"
         app:cardCornerRadius="10dp">
         <LinearLayout
-            android:id="@+id/mylayout"
+            android:id="@+id/mylayoutin"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="10dp"
             android:orientation="vertical">
             <TextView
-                android:id="@+id/title"
+                android:id="@+id/titlein"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="your task will go here"
@@ -26,7 +29,7 @@
                 android:textColor="@color/white"
                 android:fontFamily="sans-serif"/>
             <TextView
-                android:id="@+id/priority"
+                android:id="@+id/priorityin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Priority - High"

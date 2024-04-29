@@ -1,5 +1,6 @@
 package com.example.onestop.taskmanager
 
+import Adapter
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -35,7 +36,7 @@ class CompletedTask : Fragment() {
     }
 
     private fun setRecycler() {
-        binding.recyclerView.adapter = Adapter(DataObject.getCompletedtask())
+        binding.recyclerView.adapter = Adapter(requireContext(),DataObject.getCompletedtask())
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
     }
 
